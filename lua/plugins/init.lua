@@ -1,5 +1,13 @@
 return {
   {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      git = {
+        ignore = false,
+      },
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
     config = function()
       require("nvchad.configs.lspconfig").defaults()
@@ -87,13 +95,30 @@ return {
       }
     end
   },
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  { "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+        config = function()
+          require('telescope').load_extension('fzf')
+        end,
+      },
+    },
     opts = {
       defaults = {
         file_ignore_patterns = { "node_modules/", "vendor/" },
-      }
+      },
+      pickers = {
+        find_files = {
+          no_ignore = true,
+          hidden = true,
+        },
+        live_grep = {
+          additional_args = { "--no-ignore", "--hidden" },
+        },
+      },
     }
   },
   {
@@ -139,7 +164,7 @@ return {
     "qnighy/lalrpop.vim",
     lazy = false,
   },
-  { 
+  {
     "famiu/bufdelete.nvim",
   },
   {

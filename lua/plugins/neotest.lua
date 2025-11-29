@@ -41,7 +41,6 @@ return {
         adapters = {
           get_rspec_adapter(),
           require("neotest-golang"), -- Registration
-          recursive_run = true
           -- add here if you want to use other adapters
           -- get_xxx_adapter(),
         },

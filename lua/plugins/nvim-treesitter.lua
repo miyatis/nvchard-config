@@ -16,9 +16,9 @@ return {
       "c",
       "dart",
       "graphql"
+    },
+    indent = {
+      enable = false
     }
-  },
-  indent = {
-    enable = false 
   }
 }

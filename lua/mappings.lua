@@ -22,8 +22,27 @@ end, { desc = "Close all buffers except current one" })
 
 map("n", "<leader>rh", function() require("highlights").setup() end, { desc = "Reload Highlights" })
 
--- ファイルの絶対パスを表示
-map('n', '<Leader>p', ':echo expand("%:p")<CR>', { noremap = true, silent = true })
+-- ファイルパスをクリップボードにコピー
+-- ファイルの絶対パスをクリップボードにコピー
+map('n', '<Leader>p', function()
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg('+', path)
+  print('Copied to clipboard: ' .. path)
+end, { desc = "Copy absolute path to clipboard" })
+
+-- ファイルの相対パス（カレントディレクトリから）をクリップボードにコピー
+map('n', '<Leader>rp', function()
+  local path = vim.fn.expand("%:.")
+  vim.fn.setreg('+', path)
+  print('Copied to clipboard: ' .. path)
+end, { desc = "Copy relative path to clipboard" })
+
+-- ファイル名のみをクリップボードにコピー
+map('n', '<Leader>fn', function()
+  local path = vim.fn.expand("%:t")
+  vim.fn.setreg('+', path)
+  print('Copied to clipboard: ' .. path)
+end, { desc = "Copy filename to clipboard" })
 
 ---- terminalで挿入モードから通常モードにEscキーで戻れるようにする
 map("t", "<Esc>t", [[<C-\><C-n>]], { noremap = true, silent = true })
@@ -112,22 +131,22 @@ end, { desc = "Decrement number under visual" })
 map("n", "<leader>mt", "<cmd>lua require('treesj').toggle()<CR>", { desc = "Toggle Treesj" })
 
 -- dap key maps
-map("n", "<F5>", ":lua require'dap'.continue()<CR>",
+map("n", "<leader>dc", ":lua require'dap'.continue()<CR>",
   { silent = true, desc = "Continue debugging or start if not started" })
-map("n", "<F9>", ":lua require'dap'.step_into()<CR>", { silent = true, desc = "Step into the function call" })
-map("n", "<F10>", ":lua require'dap'.step_over()<CR>", { silent = true, desc = "Step over the current line of code" })
-map("n", "<F12>", ":lua require'dap'.step_out()<CR>", { silent = true, desc = "Step out of the current function" })
+map("n", "<leader>di", ":lua require'dap'.step_into()<CR>", { silent = true, desc = "Step into the function call" })
+map("n", "<leader>do", ":lua require'dap'.step_over()<CR>", { silent = true, desc = "Step over the current line of code" })
+map("n", "<leader>dt", ":lua require'dap'.step_out()<CR>", { silent = true, desc = "Step out of the current function" })
 
-map("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>",
+map("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>",
   { silent = true, desc = "Toggle breakpoint at the current line" })
-map("n", "<leader>bu", ":lua require'dap'.clear_breakpoints()<CR>", { silent = true, desc = "Clear all breakpoints" })
-map("n", "<leader>bc", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
+map("n", "<leader>dbu", ":lua require'dap'.clear_breakpoints()<CR>", { silent = true, desc = "Clear all breakpoints" })
+map("n", "<leader>dbc", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
   { silent = true, desc = "Set a breakpoint with a condition" })
-map("n", "<leader>l", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
+map("n", "<leader>dl", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
   { silent = true, desc = "Set a log point" })
 
 -- dap-ui key maps
-map("n", "<leader>d", ":lua require'dapui'.toggle()<CR>", { silent = true, desc = "Toggle dap-ui" })
+map("n", "<leader>dui", ":lua require'dapui'.toggle()<CR>", { silent = true, desc = "Toggle dap-ui" })
 
 -- Copilot
 map("n", "<leader>cd", ":Copilot disable<CR>", { desc = "Disable Copilot" })

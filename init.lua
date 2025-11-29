@@ -28,7 +28,7 @@ require("lazy").setup({
     end,
   },
 
-  { import = "plugins" },
+  { import = "plugins" }, -- lua/plugins/*.luaを自動で読み込む
 }, lazy_config)
 
 -- doに対してendを自動で補完する
