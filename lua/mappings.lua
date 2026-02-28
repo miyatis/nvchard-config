@@ -70,7 +70,6 @@ map("n", "<leader>ld", "<cmd>Lazydocker<CR>", { desc = "LazyDocker" })
 -- This overrids default mappings of Nvchad in theory.
 -- https://github.com/NvChad/NvChad/blob/v2.5/lua/nvchad/configs/lspconfig.lua
 -- However, it seems default mappings are not working, so I will keep this.
-map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true, desc = "Show hover" })
 map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true, desc = "Jump to definition" })
 map('n', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>',
   { noremap = true, silent = true, desc = "Open code actions" })

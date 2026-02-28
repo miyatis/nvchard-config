@@ -26,6 +26,8 @@ M.ui = {
   },
 }
 
+M.lsp = { signature = false }
+
 M.nvdash = {
   load_on_startup = true,
 

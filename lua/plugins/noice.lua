@@ -12,10 +12,10 @@ return {
     require("noice").setup({
       lsp = {
         hover = {
-          enabled = true,
+          enabled = false,
         },
         signature = {
-          enabled = true,
+          enabled = false,
         },
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
