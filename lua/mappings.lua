@@ -76,6 +76,11 @@ map('n', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>',
 map('x', '<leader>ca', '<Cmd>lua vim.lsp.buf.range_code_action()<CR>',
   { noremap = true, silent = true, desc = "Open code actions for selected range" })
 
+-- Diagnostic
+map('n', '<leader>dd', function()
+  vim.diagnostic.open_float({ source = true })
+end, { desc = "Show diagnostic in float window" })
+
 
 -- diffview
 map("n", "<leader>gdo", function()
