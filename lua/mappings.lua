@@ -46,6 +46,7 @@ end, { desc = "Copy filename to clipboard" })
 
 ---- terminalで挿入モードから通常モードにEscキーで戻れるようにする
 map("t", "<Esc>t", [[<C-\><C-n>]], { noremap = true, silent = true })
+map("n", "<leader>t", "<cmd>terminal<CR>", { desc = "Open terminal" })
 
 -- Movement enhancements
 map("n", "<S-l>", "$")
