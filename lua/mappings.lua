@@ -158,6 +158,9 @@ map("n", "<leader>cd", ":Copilot disable<CR>", { desc = "Disable Copilot" })
 map("n", "<leader>ce", ":Copilot enable<CR>", { desc = "Enable Copilot" })
 map("i", "<C-l>", 'copilot#Accept("<CR>")', { silent = true, expr = true, script = true, replace_keycodes = false })
 
+-- Markdown Preview
+map("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<CR>", { desc = "Markdown Preview Toggle" })
+
 -- ZenMode
 map("n", "<leader>zz", ":ZenMode<CR>", { desc = "ZenMode" })
 
